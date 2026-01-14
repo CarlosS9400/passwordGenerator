@@ -16,7 +16,7 @@ body {
     align-items: center;
     min-height: 100vh;
     overflow-x: hidden;
-    /* FIX: Add background color to body (match container's original bg) */
+    /* Fix: Background on body (covers full screen on wide displays) */
     background-color: rgb(136, 118, 118);
 }
 
@@ -29,14 +29,12 @@ body {
     justify-content: center;
     align-items: center;
     padding: 10px 20px;
-    /* MODIFIED: Remove background color from container (moved to body) */
-    /* background-color: rgb(136, 118, 118); */
+    /* Removed background (moved to body) */
     max-width: 1200px;
 }
 
-/* Keep all other styles (header, main, card, media queries, etc.) the same */
 header {
-    margin-bottom: 30px;
+    margin-bottom: 30px; /* Mobile margin (overridden on desktop) */
     width: 100%;
 }
 
@@ -44,7 +42,7 @@ header h1 {
     color: #ff7700;
     margin: 10px 0;
     text-shadow: 0px 0px 5px rgba(255, 0, 0, 0.5);
-    font-size: clamp(2rem, 5vw, 3rem);
+    font-size: clamp(2rem, 5vw, 3rem); /* Responsive font */
     font-weight: bold;
 }
 
@@ -54,36 +52,37 @@ header h2 {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    color: #c8bc0c;
+    color: #c8bc0c; /* Fallback */
     text-shadow: 0px 0px 5px rgba(255, 0, 0, 0.5);
     margin-top: 10px;
-    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-size: clamp(1.2rem, 3vw, 1.8rem); /* Responsive font */
 }
 
+/* Mobile-First Main Layout (FORCE vertical stacking) */
 main {
     display: flex;
-    justify-content: space-between;
-    min-width: 70%;
-    flex-direction: column;
-    width: 100%;
-    gap: 20px;
+    flex-direction: column !important; /* Critical: Stack vertically on mobile */
+    width: 100% !important; /* Full width on mobile */
+    gap: 20px !important; /* Space between cards */
+    padding: 0 10px !important; /* Prevent edge cutoff */
 }
 
+/* Mobile-First Card Styles */
 .card {
     background-color: #4075ca;
     padding: 25px 20px;
     border-radius: 20px;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.6);
-    width: 100%;
-    margin: 0;
+    width: 100% !important; /* Full width on mobile */
+    margin: 0 !important; /* Override any conflicting margin */
 }
 
 .card .title {
-    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    font-size: clamp(1.2rem, 3vw, 1.5rem); /* Responsive font */
 }
 
 .card h3 {
-    font-size: clamp(0.9rem, 2vw, 1rem);
+    font-size: clamp(0.9rem, 2vw, 1rem); /* Responsive font */
     margin: 20px 0;
     color: #fff;
 }
@@ -104,7 +103,7 @@ main {
     border: none;
     font-weight: bold;
     transition: background-color 0.3s ease;
-    font-size: clamp(0.9rem, 2vw, 1rem);
+    font-size: clamp(0.9rem, 2vw, 1rem); /* Responsive font */
 }
 
 .btn:hover, .btn:focus {
@@ -119,18 +118,18 @@ footer {
     color: rgb(51, 48, 48);
     font-weight: bold;
     padding: 10px;
-    font-size: clamp(0.7rem, 2vw, 0.875rem);
-    margin-top: auto;
+    font-size: clamp(0.7rem, 2vw, 0.875rem); /* Responsive font */
+    margin-top: auto; /* Keep footer at bottom */
 }
 
 #length-value {
-    width: clamp(150px, 40vw, 200px);
-    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    width: clamp(150px, 40vw, 200px); /* Responsive width */
+    font-size: clamp(1.2rem, 3vw, 1.5rem); /* Responsive font */
 }
 
 .password-card {
     background-color: #4075ca;
-    padding: 15px 10px;
+    padding: 15px 10px; /* Touch-friendly padding */
     margin-bottom: 20px;
     border-radius: 20px;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.6);
@@ -140,30 +139,31 @@ footer {
 
 .copy {
     background-color: #4075ca;
-    padding: 8px 12px;
+    padding: 8px 12px; /* Touch-friendly padding */
     border: none;
     color: whitesmoke;
-    font-size: clamp(0.9rem, 2vw, 1rem);
-    border-radius: 8px;
+    font-size: clamp(0.9rem, 2vw, 1rem); /* Responsive font */
+    border-radius: 8px; /* Rounded for mobile */
 }
 
-@media (min-width: 768px) {
+/* Desktop Layout (Only activate on screens > 768px) */
+@media only screen and (min-width: 768px) {
     main {
-        flex-direction: row;
-        justify-content: space-between;
-        min-width: 70%;
+        flex-direction: row !important; /* Side-by-side on desktop */
+        justify-content: space-between !important;
+        min-width: 70% !important;
+        padding: 0 !important;
     }
-
     .card {
-        width: 45%;
-        margin: 20px 20px;
+        width: 45% !important; /* 45% width on desktop */
+        margin: 20px 20px !important;
     }
-
     header {
-        margin-bottom: 50px;
+        margin-bottom: 50px !important; /* Restore desktop margin */
     }
 }
 
+/* Extra Large Screens (1200px+) */
 @media (min-width: 1200px) {
     .container {
         padding: 20px 40px;
