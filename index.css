@@ -149,17 +149,17 @@ footer {
 /* Desktop Layout (Only activate on screens > 768px) */
 @media only screen and (min-width: 768px) {
     main {
-        flex-direction: row !important; /* Side-by-side on desktop */
-        justify-content: space-between !important;
+        flex-direction: row;
+        justify-content: space-between;
         min-width: 70% !important;
         padding: 0 !important;
     }
     .card {
-        width: 45% !important; /* 45% width on desktop */
-        margin: 20px 20px !important;
+        width: 45%;
+        margin: 20px 20px;
     }
     header {
-        margin-bottom: 50px !important; /* Restore desktop margin */
+        margin-bottom: 50px;
     }
 }
 
