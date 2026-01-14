@@ -72,6 +72,10 @@ main {
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.6);
     width: 100% !important;
     margin: 0 !important;
+    /* Prevent any content (slider/selector) from overflowing */
+    overflow: hidden;
+    /* Add inner wrapper fix (optional but safe) */
+    position: relative;
 }
 
 .card .title {
@@ -84,11 +88,65 @@ main {
     color: #fff;
 }
 
+/* -------------------------- */
+/* FIX: Range Slider (Critical for Mobile) */
+/* -------------------------- */
 .range {
-    width: 80%;
-    accent-color: red;
-    margin: 15px 0;
+    /* Use width: calc(100% - 0px) + padding/margin adjustment */
+    width: 100%;
+    /* Fix iOS slider overflow: add horizontal padding reset */
+    margin: 15px auto;
+    padding: 0 5px; /* Nudge slider inward to fit card */
     height: 8px;
+    accent-color: red;
+    /* Remove iOS default slider styling that causes overflow */
+    -webkit-appearance: none;
+    appearance: none;
+    /* Ensure slider track doesn't overflow */
+    border-radius: 4px;
+}
+
+/* Fix iOS slider track styling (prevents width issues) */
+.range::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8px;
+    background: #ddd;
+    border-radius: 4px;
+}
+
+/* Fix iOS slider thumb (prevents overflow) */
+.range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: red;
+    cursor: pointer;
+    margin-top: -6px; /* Align thumb with track */
+}
+
+/* Selector Styles (kept for completeness) */
+#level {
+    width: 100% !important; /* Fit selector to card width */
+    padding: 10px 15px; /* Add padding for touch */
+    border-radius: 10px; /* Match card styling */
+    border: none; /* Remove default border */
+    background-color: #fff; /* White background for contrast */
+    color: #333; /* Dark text for readability */
+    font-size: clamp(0.8rem, 2vw, 1rem); /* Responsive font size */
+    margin: 15px 0; /* Spacing above/below */
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+}
+
+#level option {
+    font-size: 1rem;
+    padding: 10px;
 }
 
 .btn {
@@ -157,6 +215,15 @@ footer {
     }
     header {
         margin-bottom: 50px !important;
+    }
+    /* Adjust range/selector for desktop */
+    .range {
+        width: 90% !important;
+        padding: 0 !important;
+    }
+    #level {
+        width: 80% !important;
+        font-size: 1rem !important;
     }
 }
 
