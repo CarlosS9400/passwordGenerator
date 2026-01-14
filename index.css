@@ -1,0 +1,171 @@
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+
+body {
+    color: #c5c0e8;
+    font-family: "Roboto", sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+    /* FIX: Add background color to body (match container's original bg) */
+    background-color: rgb(136, 118, 118);
+}
+
+.container {
+    flex: 1;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    /* MODIFIED: Remove background color from container (moved to body) */
+    /* background-color: rgb(136, 118, 118); */
+    max-width: 1200px;
+}
+
+/* Keep all other styles (header, main, card, media queries, etc.) the same */
+header {
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+header h1 {
+    color: #ff7700;
+    margin: 10px 0;
+    text-shadow: 0px 0px 5px rgba(255, 0, 0, 0.5);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: bold;
+}
+
+header h2 {
+    display: inline-block;
+    background: linear-gradient(45deg, #1148de, #c8bc0c);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    color: #c8bc0c;
+    text-shadow: 0px 0px 5px rgba(255, 0, 0, 0.5);
+    margin-top: 10px;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    min-width: 70%;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+}
+
+.card {
+    background-color: #4075ca;
+    padding: 25px 20px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.6);
+    width: 100%;
+    margin: 0;
+}
+
+.card .title {
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+}
+
+.card h3 {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    margin: 20px 0;
+    color: #fff;
+}
+
+.range {
+    width: 100%;
+    accent-color: red;
+    margin: 15px 0;
+    height: 8px;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px 20px;
+    color: whitesmoke;
+    background-color: #ff7700;
+    border-radius: 20px;
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+}
+
+.btn:hover, .btn:focus {
+    background-color: #e66a00;
+    cursor: pointer;
+    outline: none;
+}
+
+footer {
+    background-color: #f0f1f4;
+    width: 100%;
+    color: rgb(51, 48, 48);
+    font-weight: bold;
+    padding: 10px;
+    font-size: clamp(0.7rem, 2vw, 0.875rem);
+    margin-top: auto;
+}
+
+#length-value {
+    width: clamp(150px, 40vw, 200px);
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+}
+
+.password-card {
+    background-color: #4075ca;
+    padding: 15px 10px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.6);
+    width: 100%;
+    border: none;
+}
+
+.copy {
+    background-color: #4075ca;
+    padding: 8px 12px;
+    border: none;
+    color: whitesmoke;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    border-radius: 8px;
+}
+
+@media (min-width: 768px) {
+    main {
+        flex-direction: row;
+        justify-content: space-between;
+        min-width: 70%;
+    }
+
+    .card {
+        width: 45%;
+        margin: 20px 20px;
+    }
+
+    header {
+        margin-bottom: 50px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        padding: 20px 40px;
+    }
+}

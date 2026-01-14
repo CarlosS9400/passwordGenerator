@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <title>Carlos'Password Generator</title>
+    </head>
+    <body>
+        <div class="container">
+                <header>
+                    <h1>Carlos' Password Generator</h1>
+                    <h2>Generate a random password</h2>
+                </header>
+                <main>
+                    <section class="card">
+                        
+                        <h3 class="title">Choose the length of your password: <span id="length-value"> 6 </span></h3>
+
+                        <input class="range" type="range" oninput="changeLength()" min="6" max="16" value="6" 
+                        id="passwordLength">
+                        <h3>Choose the element added to your password</h3>
+                        
+                        <select id="level"> 
+                            <option value="simple" class="char">Simple (Letter)</option> 
+                            <option value="medium" class="add-num">Medium (Letter + Number)</option> 
+                            <option value="hard" class="add-symbol">Hard (Letter + Number + Symbols)</option>
+                        </select>
+                        <h3>Never use an insecure password again</h3>
+                        <button class="btn" onclick="generate()">Generate a random password</button>
+                        
+                    </section>  
+
+                    <section class="card">
+                        <h3 class="title">Your passwords</h3>
+                            <div id="password"></div>
+                    </section>
+
+                </main>
+        
+              
+        </div>
+        <footer>
+            <p>&copy; 2026 Carlos</p>
+        </footer>
+       
+        <script src="index.js"></script>
+    </body>
+</html>
